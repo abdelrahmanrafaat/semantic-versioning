@@ -1,0 +1,16 @@
+{
+    "name": "abdelrahman/semantic-versioning",
+    "description": "PHP Package for managing semantic-versioning",
+    "type": "library",
+    "require-dev": {
+        "phpunit/phpunit": "~7"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "abdelrahmanrafaat",
+            "email": "abdel.rahmanrafaat5@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev"
+}
