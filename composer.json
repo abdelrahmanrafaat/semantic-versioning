@@ -2,8 +2,17 @@
     "name": "abdelrahman/semantic-versioning",
     "description": "PHP Package for managing semantic-versioning",
     "type": "library",
+    "require": {
+        "php": "~7.1"
+    },
     "require-dev": {
         "phpunit/phpunit": "~7"
+    },
+    "autoload": {
+        "psr-4":{
+            "Abdelrahmanrafaat\\SchemaToCode\\" : "src/",
+            "Tests\\" : "tests/"
+        }
     },
     "license": "MIT",
     "authors": [
