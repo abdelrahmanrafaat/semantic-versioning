@@ -10,7 +10,7 @@
     },
     "autoload": {
         "psr-4":{
-            "Abdelrahmanrafaat\\SchemaToCode\\" : "src/",
+            "Abdelrahmanrafaat\\SemanticVersion\\" : "src/",
             "Tests\\" : "tests/"
         }
     },
