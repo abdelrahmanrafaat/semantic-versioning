@@ -54,10 +54,6 @@ class BuildMetaData
      */
     protected function validate(array $parsingResult): void
     {
-        if (empty($parsingResult)) {
-            throw new EmptyBuildMetaDataIdentifierException;
-        }
-
         foreach ($parsingResult as $identifier) {
             if (empty($identifier)) {
                 throw new EmptyBuildMetaDataIdentifierException;
