@@ -53,7 +53,7 @@ class NormalVersion
      */
     protected function parse(string $version): array
     {
-        if(empty($version)){
+        if (empty($version)) {
             return [];
         }
 
@@ -81,6 +81,7 @@ class NormalVersion
      *
      * @throws \Abdelrahmanrafaat\SemanticVersion\NormalVersion\InvalidNormalVersionException
      * @throws \Abdelrahmanrafaat\SemanticVersion\NormalVersion\NormalVersionShouldBePositiveNumberException
+     * @throws \Abdelrahmanrafaat\SemanticVersion\NormalVersion\MajorIdentifierCanNotBeZeroException
      */
     protected function validate(array $parsingResult): void
     {
@@ -89,12 +90,16 @@ class NormalVersion
             throw new InvalidNormalVersionException;
         }
 
-        foreach ($parsingResult as $identifier) {
-            if (empty($identifier)) {
-                throw new InvalidNormalVersionException;
+        foreach ($parsingResult as $index => $identifier) {
+            if(!StringHelpers::isPositiveInteger($identifier)){
+                throw new NormalVersionShouldBePositiveNumberException;
             }
 
-            if (!StringHelpers::isPositiveInteger($identifier) || StringHelpers::hasLeadingZero($identifier)) {
+            if ($index == 0 && (int)$identifier == 0){
+                throw new MajorIdentifierCanNotBeZeroException;
+            }
+
+            if ((int)$identifier != 0 && StringHelpers::hasLeadingZero($identifier)) {
                 throw new NormalVersionShouldBePositiveNumberException;
             }
         }

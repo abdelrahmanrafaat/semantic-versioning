@@ -26,6 +26,7 @@ class PreReleaseTest extends TestCase
     public function setUp(): void
     {
         $this->preRelease = new PreRelease;
+        parent::setUp();
     }
 
     /**

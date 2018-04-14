@@ -264,7 +264,7 @@ class SemanticVersion
         $firstVersionIdentifiers  = $this->preRelease->getIdentifiers();
         $secondVersionIdentifiers = $version->preRelease->getIdentifiers();
 
-        for ($i = 0; $i < count($firstVersionIdentifiers); $i++) {
+        for ($i = 0; $i < min(count($firstVersionIdentifiers), count($secondVersionIdentifiers)); $i++) {
             if ($firstVersionIdentifiers[$i] == $secondVersionIdentifiers[$i]) {
                 continue;
             }

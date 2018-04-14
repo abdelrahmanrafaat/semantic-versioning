@@ -17,21 +17,11 @@ class StringHelpersTest extends TestCase
      */
     public function testIsAlphaNumeric(): void
     {
-        $this->assertTrue(
-            StringHelpers::isAlphaNumeric('alphaNumeric')
-        );
+        $this->assertTrue(StringHelpers::isAlphaNumeric('alphaNumeric'));
+        $this->assertTrue(StringHelpers::isAlphaNumeric('12345'));
 
-        $this->assertTrue(
-            StringHelpers::isAlphaNumeric('12345')
-        );
-
-        $this->assertFalse(
-            StringHelpers::isAlphaNumeric('+')
-        );
-
-        $this->assertFalse(
-            StringHelpers::isAlphaNumeric('-')
-        );
+        $this->assertFalse(StringHelpers::isAlphaNumeric('+'));
+        $this->assertFalse(StringHelpers::isAlphaNumeric('-'));
     }
 
     /**
@@ -39,29 +29,13 @@ class StringHelpersTest extends TestCase
      */
     public function testIsPositiveInteger(): void
     {
-        $this->assertTrue(
-            StringHelpers::isPositiveInteger('0')
-        );
+        $this->assertTrue(StringHelpers::isPositiveInteger('0'));
+        $this->assertTrue(StringHelpers::isPositiveInteger('1'));
+        $this->assertTrue(StringHelpers::isPositiveInteger('10'));
+        $this->assertTrue(StringHelpers::isPositiveInteger('150000'));
 
-        $this->assertTrue(
-            StringHelpers::isPositiveInteger('1')
-        );
-
-        $this->assertTrue(
-            StringHelpers::isPositiveInteger('10')
-        );
-
-        $this->assertTrue(
-            StringHelpers::isPositiveInteger('150000')
-        );
-
-        $this->assertFalse(
-            StringHelpers::isPositiveInteger('text')
-        );
-
-        $this->assertFalse(
-            StringHelpers::isPositiveInteger('-10')
-        );
+        $this->assertFalse(StringHelpers::isPositiveInteger('text'));
+        $this->assertFalse(StringHelpers::isPositiveInteger('-10'));
     }
 
     /**
@@ -69,17 +43,10 @@ class StringHelpersTest extends TestCase
      */
     public function testHasLeadingZero(): void
     {
-        $this->assertTrue(
-            StringHelpers::hasLeadingZero('010')
-        );
+        $this->assertTrue(StringHelpers::hasLeadingZero('010'));
 
-        $this->assertFalse(
-            StringHelpers::hasLeadingZero('10')
-        );
-
-        $this->assertFalse(
-            StringHelpers::hasLeadingZero('-10')
-        );
+        $this->assertFalse(StringHelpers::hasLeadingZero('10'));
+        $this->assertFalse(StringHelpers::hasLeadingZero('-10'));
     }
 
     /**

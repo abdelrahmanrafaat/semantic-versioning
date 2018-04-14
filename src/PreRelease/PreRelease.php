@@ -102,5 +102,4 @@ class PreRelease
     {
         return $this->identifiers;
     }
-
 }

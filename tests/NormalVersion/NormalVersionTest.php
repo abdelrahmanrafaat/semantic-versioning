@@ -2,6 +2,7 @@
 
 namespace Tests\NormalVersion;
 
+use Abdelrahmanrafaat\SemanticVersion\NormalVersion\MajorIdentifierCanNotBeZeroException;
 use PHPUnit\Framework\TestCase;
 use Abdelrahmanrafaat\SemanticVersion\NormalVersion\NormalVersion;
 use Abdelrahmanrafaat\SemanticVersion\NormalVersion\InvalidNormalVersionException;
@@ -47,7 +48,7 @@ class NormalVersionTest extends TestCase
      * @throws \Abdelrahmanrafaat\SemanticVersion\NormalVersion\InvalidNormalVersionException
      * @throws \Abdelrahmanrafaat\SemanticVersion\NormalVersion\NormalVersionShouldBePositiveNumberException
      */
-    public function testSetVersionThrowsExceptionWhenVersionPiecesIsGreaterThanThree(): void
+    public function testSetVersionThrowsExceptionWhenIdentifiersIsGreaterThanThree(): void
     {
         $this->expectException(InvalidNormalVersionException::class);
         $this->normalVersion->setVersion('1.2.3.4');
@@ -57,7 +58,7 @@ class NormalVersionTest extends TestCase
      * @throws \Abdelrahmanrafaat\SemanticVersion\NormalVersion\InvalidNormalVersionException
      * @throws \Abdelrahmanrafaat\SemanticVersion\NormalVersion\NormalVersionShouldBePositiveNumberException
      */
-    public function testSetVersionThrowsExceptionWhenVersionIdentifiersIsNotInteger(): void
+    public function testSetVersionThrowsExceptionWhenIdentifiersIsNotInteger(): void
     {
         $this->expectException(NormalVersionShouldBePositiveNumberException::class);
         $this->normalVersion->setVersion('x.y.z');
@@ -67,7 +68,7 @@ class NormalVersionTest extends TestCase
      * @throws \Abdelrahmanrafaat\SemanticVersion\NormalVersion\InvalidNormalVersionException
      * @throws \Abdelrahmanrafaat\SemanticVersion\NormalVersion\NormalVersionShouldBePositiveNumberException
      */
-    public function testSetVersionThrowsExceptionWhenVersionIdentifiersIsNotPositiveInteger(): void
+    public function testSetVersionThrowsExceptionWhenIdentifiersIsNotPositiveInteger(): void
     {
         $this->expectException(NormalVersionShouldBePositiveNumberException::class);
         $this->normalVersion->setVersion('-1.1.1');
@@ -77,10 +78,20 @@ class NormalVersionTest extends TestCase
      * @throws \Abdelrahmanrafaat\SemanticVersion\NormalVersion\InvalidNormalVersionException
      * @throws \Abdelrahmanrafaat\SemanticVersion\NormalVersion\NormalVersionShouldBePositiveNumberException
      */
-    public function testSetVersionThrowsExceptionWhenVersionIdentifiersHasLeadingZero(): void
+    public function testSetVersionThrowsExceptionWhenIdentifiersHasLeadingZero(): void
     {
         $this->expectException(NormalVersionShouldBePositiveNumberException::class);
         $this->normalVersion->setVersion('01.1.1');
+    }
+
+    /**
+     * @throws \Abdelrahmanrafaat\SemanticVersion\NormalVersion\InvalidNormalVersionException
+     * @throws \Abdelrahmanrafaat\SemanticVersion\NormalVersion\NormalVersionShouldBePositiveNumberException
+     */
+    public function testSetVersionThrowsExceptionWhenMajorIdentifier(): void
+    {
+        $this->expectException(MajorIdentifierCanNotBeZeroException::class);
+        $this->normalVersion->setVersion('0.1.1');
     }
 
     /**
