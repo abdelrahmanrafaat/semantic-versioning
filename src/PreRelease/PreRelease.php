@@ -38,7 +38,7 @@ class PreRelease
      *
      * @return array
      */
-    public function parse(string $version): array
+    protected function parse(string $version): array
     {
         if (empty($version)) {
             return [];
@@ -58,7 +58,7 @@ class PreRelease
      * @throws \Abdelrahmanrafaat\SemanticVersion\PreRelease\LeadingZeroPreReleaseIdentifierException
      * @throws \Abdelrahmanrafaat\SemanticVersion\PreRelease\InvalidPreReleaseIdentifierException
      */
-    public function validate(array $parsingResult): void
+    protected function validate(array $parsingResult): void
     {
         foreach ($parsingResult as $identifier) {
             if (empty($identifier)) {
@@ -82,7 +82,7 @@ class PreRelease
     /**
      * @param array $parsingResult
      */
-    public function mapToIdentifiers(array $parsingResult): void
+    protected function mapToIdentifiers(array $parsingResult): void
     {
         $this->identifiers = $parsingResult;
     }
