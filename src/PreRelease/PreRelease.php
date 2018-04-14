@@ -65,7 +65,7 @@ class PreRelease
                 throw new EmptyPreReleaseIdentifierException;
             }
 
-            if (StringHelpers::isInteger($identifier)) {
+            if (StringHelpers::isPositiveInteger($identifier)) {
                 if (StringHelpers::hasLeadingZero($identifier)) {
                     throw new LeadingZeroPreReleaseIdentifierException;
                 }

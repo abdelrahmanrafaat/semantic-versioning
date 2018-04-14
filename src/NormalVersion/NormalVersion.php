@@ -94,7 +94,7 @@ class NormalVersion
                 throw new InvalidNormalVersionException;
             }
 
-            if (!StringHelpers::isInteger($identifier) || StringHelpers::hasLeadingZero($identifier)) {
+            if (!StringHelpers::isPositiveInteger($identifier) || StringHelpers::hasLeadingZero($identifier)) {
                 throw new NormalVersionShouldBePositiveNumberException;
             }
         }

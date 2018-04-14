@@ -24,7 +24,7 @@ class StringHelpers
      *
      * @return bool
      */
-    public static function isInteger(string $text): bool
+    public static function isPositiveInteger(string $text): bool
     {
         return ctype_digit($text);
     }
@@ -37,7 +37,6 @@ class StringHelpers
     public static function hasLeadingZero(string $text): bool
     {
         $leadingChar = $text[0] ?? '';
-
         return $leadingChar == '0';
     }
 

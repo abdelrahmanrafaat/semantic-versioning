@@ -270,17 +270,17 @@ class SemanticVersion
             }
 
             // Both identifiers are numeric, compare them
-            if (StringHelpers::isInteger($firstVersionIdentifiers[$i]) && StringHelpers::isInteger($secondVersionIdentifiers[$i])) {
+            if (StringHelpers::isPositiveInteger($firstVersionIdentifiers[$i]) && StringHelpers::isPositiveInteger($secondVersionIdentifiers[$i])) {
                 return $firstVersionIdentifiers[$i] < $secondVersionIdentifiers[$i];
             }
 
             // One of the identifiers is numeric and the other not
             // Numeric identifiers always have lower precedence than non-numeric identifiers
-            if (StringHelpers::isInteger($firstVersionIdentifiers[$i]) && !StringHelpers::isInteger($secondVersionIdentifiers[$i])) {
+            if (StringHelpers::isPositiveInteger($firstVersionIdentifiers[$i]) && !StringHelpers::isPositiveInteger($secondVersionIdentifiers[$i])) {
                 return true;
             }
 
-            if (!StringHelpers::isInteger($firstVersionIdentifiers[$i]) && StringHelpers::isInteger($secondVersionIdentifiers[$i])) {
+            if (!StringHelpers::isPositiveInteger($firstVersionIdentifiers[$i]) && StringHelpers::isPositiveInteger($secondVersionIdentifiers[$i])) {
                 return false;
             }
 
