@@ -4,8 +4,8 @@ namespace Tests;
 
 use PHPUnit\Framework\TestCase;
 use Abdelrahmanrafaat\SemanticVersion\SemanticVersion;
-use Abdelrahmanrafaat\SemanticVersion\InvalidVersionException;
-use Abdelrahmanrafaat\SemanticVersion\VersionShouldBePositiveNumberException;
+use Abdelrahmanrafaat\SemanticVersion\InvalidNormalVersionException;
+use Abdelrahmanrafaat\SemanticVersion\NormalVersionShouldBePositiveNumberException;
 
 /**
  * Class SemanticVersionTest
@@ -29,8 +29,8 @@ class SemanticVersionTest extends TestCase
     }
 
     /**
-     * @throws \Abdelrahmanrafaat\SemanticVersion\InvalidVersionException
-     * @throws \Abdelrahmanrafaat\SemanticVersion\VersionShouldBePositiveNumberException
+     * @throws \Abdelrahmanrafaat\SemanticVersion\InvalidNormalVersionException
+     * @throws \Abdelrahmanrafaat\SemanticVersion\NormalVersionShouldBePositiveNumberException
      */
     public function setVersion(): void
     {
@@ -41,56 +41,56 @@ class SemanticVersionTest extends TestCase
     /**
      * @return void
      *
-     * @throws \Abdelrahmanrafaat\SemanticVersion\InvalidVersionException
-     * @throws \Abdelrahmanrafaat\SemanticVersion\VersionShouldBePositiveNumberException
+     * @throws \Abdelrahmanrafaat\SemanticVersion\InvalidNormalVersionException
+     * @throws \Abdelrahmanrafaat\SemanticVersion\NormalVersionShouldBePositiveNumberException
      */
     public function testSetVersionThrowsExceptionWhenVersionIsEmpty(): void
     {
-        $this->expectException(InvalidVersionException::class);
+        $this->expectException(InvalidNormalVersionException::class);
         $this->semanticVersion->setVersion('');
     }
 
     /**
      * @return void
      *
-     * @throws \Abdelrahmanrafaat\SemanticVersion\InvalidVersionException
-     * @throws \Abdelrahmanrafaat\SemanticVersion\VersionShouldBePositiveNumberException
+     * @throws \Abdelrahmanrafaat\SemanticVersion\InvalidNormalVersionException
+     * @throws \Abdelrahmanrafaat\SemanticVersion\NormalVersionShouldBePositiveNumberException
      */
     public function testSetVersionThrowsExceptionWhenVersionPiecesIsGreaterThanThree(): void
     {
-        $this->expectException(InvalidVersionException::class);
+        $this->expectException(InvalidNormalVersionException::class);
         $this->semanticVersion->setVersion('1.2.3.4');
     }
 
     /**
      * @return void
      *
-     * @throws \Abdelrahmanrafaat\SemanticVersion\InvalidVersionException
-     * @throws \Abdelrahmanrafaat\SemanticVersion\VersionShouldBePositiveNumberException
+     * @throws \Abdelrahmanrafaat\SemanticVersion\InvalidNormalVersionException
+     * @throws \Abdelrahmanrafaat\SemanticVersion\NormalVersionShouldBePositiveNumberException
      */
     public function testSetVersionThrowsExceptionWhenVersionPiecesIsNotInteger(): void
     {
-        $this->expectException(VersionShouldBePositiveNumberException::class);
+        $this->expectException(NormalVersionShouldBePositiveNumberException::class);
         $this->semanticVersion->setVersion('x.y.z');
     }
 
     /**
      * @return void
      *
-     * @throws \Abdelrahmanrafaat\SemanticVersion\InvalidVersionException
-     * @throws \Abdelrahmanrafaat\SemanticVersion\VersionShouldBePositiveNumberException
+     * @throws \Abdelrahmanrafaat\SemanticVersion\InvalidNormalVersionException
+     * @throws \Abdelrahmanrafaat\SemanticVersion\NormalVersionShouldBePositiveNumberException
      */
     public function testSetVersionThrowsExceptionWhenVersionPiecesIsNotPositiveInteger(): void
     {
-        $this->expectException(VersionShouldBePositiveNumberException::class);
+        $this->expectException(NormalVersionShouldBePositiveNumberException::class);
         $this->semanticVersion->setVersion('-1.1.1');
     }
 
     /**
      * @return void
      *
-     * @throws \Abdelrahmanrafaat\SemanticVersion\InvalidVersionException
-     * @throws \Abdelrahmanrafaat\SemanticVersion\VersionShouldBePositiveNumberException
+     * @throws \Abdelrahmanrafaat\SemanticVersion\InvalidNormalVersionException
+     * @throws \Abdelrahmanrafaat\SemanticVersion\NormalVersionShouldBePositiveNumberException
      */
     public function testGetVersion(): void
     {
@@ -101,8 +101,8 @@ class SemanticVersionTest extends TestCase
     /**
      * @return void
      *
-     * @throws \Abdelrahmanrafaat\SemanticVersion\InvalidVersionException
-     * @throws \Abdelrahmanrafaat\SemanticVersion\VersionShouldBePositiveNumberException
+     * @throws \Abdelrahmanrafaat\SemanticVersion\InvalidNormalVersionException
+     * @throws \Abdelrahmanrafaat\SemanticVersion\NormalVersionShouldBePositiveNumberException
      */
     public function testPumpMajor(): void
     {
@@ -132,8 +132,8 @@ class SemanticVersionTest extends TestCase
     /**
      * @return void
      *
-     * @throws \Abdelrahmanrafaat\SemanticVersion\InvalidVersionException
-     * @throws \Abdelrahmanrafaat\SemanticVersion\VersionShouldBePositiveNumberException
+     * @throws \Abdelrahmanrafaat\SemanticVersion\InvalidNormalVersionException
+     * @throws \Abdelrahmanrafaat\SemanticVersion\NormalVersionShouldBePositiveNumberException
      */
     public function testPumpMinor(): void
     {
@@ -163,8 +163,8 @@ class SemanticVersionTest extends TestCase
     /**
      * @return void
      *
-     * @throws \Abdelrahmanrafaat\SemanticVersion\InvalidVersionException
-     * @throws \Abdelrahmanrafaat\SemanticVersion\VersionShouldBePositiveNumberException
+     * @throws \Abdelrahmanrafaat\SemanticVersion\InvalidNormalVersionException
+     * @throws \Abdelrahmanrafaat\SemanticVersion\NormalVersionShouldBePositiveNumberException
      */
     public function testPumpPatch(): void
     {
@@ -194,8 +194,8 @@ class SemanticVersionTest extends TestCase
     /**
      * @return void
      *
-     * @throws \Abdelrahmanrafaat\SemanticVersion\InvalidVersionException
-     * @throws \Abdelrahmanrafaat\SemanticVersion\VersionShouldBePositiveNumberException
+     * @throws \Abdelrahmanrafaat\SemanticVersion\InvalidNormalVersionException
+     * @throws \Abdelrahmanrafaat\SemanticVersion\NormalVersionShouldBePositiveNumberException
      */
     public function testGetMajor(): void
     {
@@ -209,8 +209,8 @@ class SemanticVersionTest extends TestCase
     /**
      * @return void
      *
-     * @throws \Abdelrahmanrafaat\SemanticVersion\InvalidVersionException
-     * @throws \Abdelrahmanrafaat\SemanticVersion\VersionShouldBePositiveNumberException
+     * @throws \Abdelrahmanrafaat\SemanticVersion\InvalidNormalVersionException
+     * @throws \Abdelrahmanrafaat\SemanticVersion\NormalVersionShouldBePositiveNumberException
      */
     public function testGetMinor(): void
     {
@@ -224,8 +224,8 @@ class SemanticVersionTest extends TestCase
     /**
      * @return void
      *
-     * @throws \Abdelrahmanrafaat\SemanticVersion\InvalidVersionException
-     * @throws \Abdelrahmanrafaat\SemanticVersion\VersionShouldBePositiveNumberException
+     * @throws \Abdelrahmanrafaat\SemanticVersion\InvalidNormalVersionException
+     * @throws \Abdelrahmanrafaat\SemanticVersion\NormalVersionShouldBePositiveNumberException
      */
     public function testGetPatch(): void
     {
