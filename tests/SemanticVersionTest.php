@@ -3,7 +3,6 @@
 namespace Tests;
 
 use Abdelrahmanrafaat\SemanticVersion\SemanticVersion;
-use Abdelrahmanrafaat\SemanticVersion\SemanticVersionDependenciesFactory;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -23,7 +22,7 @@ class SemanticVersionTest extends TestCase
      */
     public function setUp(): void
     {
-        $this->semanticVersion = new SemanticVersion(new SemanticVersionDependenciesFactory);
+        $this->semanticVersion = new SemanticVersion;
 
         parent::setUp();
     }
@@ -127,7 +126,7 @@ class SemanticVersionTest extends TestCase
     public function testEquals(string $version, string $otherVersion, bool $areEqual): void
     {
         $this->semanticVersion->setVersion($version);
-        $otherVersionInstance = new SemanticVersion(new SemanticVersionDependenciesFactory);
+        $otherVersionInstance = new SemanticVersion;
         $otherVersionInstance->setVersion($otherVersion);
 
         $this->assertEquals(
@@ -193,7 +192,7 @@ class SemanticVersionTest extends TestCase
     public function testLessThan(string $version, string $otherVersion, bool $isLessThan): void
     {
         $this->semanticVersion->setVersion($version);
-        $otherVersionInstance = new SemanticVersion(new SemanticVersionDependenciesFactory);
+        $otherVersionInstance = new SemanticVersion;
         $otherVersionInstance->setVersion($otherVersion);
 
         $this->assertEquals(

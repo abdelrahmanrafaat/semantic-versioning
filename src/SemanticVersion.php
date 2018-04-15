@@ -36,8 +36,12 @@ class SemanticVersion
      *
      * @param \Abdelrahmanrafaat\SemanticVersion\SemanticVersionDependenciesFactory $dependenciesFactory
      */
-    public function __construct(SemanticVersionDependenciesFactory $dependenciesFactory)
+    public function __construct(SemanticVersionDependenciesFactory $dependenciesFactory = null)
     {
+        if($dependenciesFactory == null){
+            $dependenciesFactory = new SemanticVersionDependenciesFactory;
+        }
+
         $this->normalVersion = $dependenciesFactory->makeNormalVersion();
         $this->preRelease    = $dependenciesFactory->makePreRelease();
         $this->buildMetaData = $dependenciesFactory->makeBuildMetaData();
