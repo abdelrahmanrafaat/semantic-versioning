@@ -1,6 +1,6 @@
 {
     "name": "abdelrahman/semantic-versioning",
-    "description": "PHP Package for managing semantic-versioning",
+    "description": "PHP Package for managing semantic versions",
     "type": "library",
     "require": {
         "php": "~7.1"
