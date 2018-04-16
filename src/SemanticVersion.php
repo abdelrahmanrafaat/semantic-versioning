@@ -50,6 +50,8 @@ class SemanticVersion
     /**
      * @param string $version
      *
+     * @return \Abdelrahmanrafaat\SemanticVersion\SemanticVersion
+     *                                                           
      * @throws \Abdelrahmanrafaat\SemanticVersion\BuildMetaData\EmptyBuildMetaDataIdentifierException
      * @throws \Abdelrahmanrafaat\SemanticVersion\BuildMetaData\InvalidBuildMetaDataIdentifierException
      * @throws \Abdelrahmanrafaat\SemanticVersion\NormalVersion\InvalidNormalVersionException
@@ -58,7 +60,7 @@ class SemanticVersion
      * @throws \Abdelrahmanrafaat\SemanticVersion\PreRelease\InvalidPreReleaseIdentifierException
      * @throws \Abdelrahmanrafaat\SemanticVersion\PreRelease\LeadingZeroPreReleaseIdentifierException
      */
-    public function setVersion(string $version): void
+    public function setVersion(string $version): SemanticVersion
     {
         $parsingResult = $this->parse($version);
 
@@ -73,6 +75,8 @@ class SemanticVersion
         $this->buildMetaData->setVersion(
             $parsingResult[self::BUILD_META_DATA]
         );
+
+        return $this;
     }
 
     /**
