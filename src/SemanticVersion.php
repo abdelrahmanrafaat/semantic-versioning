@@ -51,7 +51,7 @@ class SemanticVersion
      * @param string $version
      *
      * @return \Abdelrahmanrafaat\SemanticVersion\SemanticVersion
-     *                                                           
+     *
      * @throws \Abdelrahmanrafaat\SemanticVersion\BuildMetaData\EmptyBuildMetaDataIdentifierException
      * @throws \Abdelrahmanrafaat\SemanticVersion\BuildMetaData\InvalidBuildMetaDataIdentifierException
      * @throws \Abdelrahmanrafaat\SemanticVersion\NormalVersion\InvalidNormalVersionException
@@ -103,7 +103,7 @@ class SemanticVersion
         foreach (str_split($version) as $char) {
 
             // Start extracting preRelease after the first -
-            if (!$isPreRelease && $char == self::PRE_RELEASE_SYMBOL) {
+            if (!$isPreRelease && !$isBuildMetaData && $char == self::PRE_RELEASE_SYMBOL) {
                 $isPreRelease = true;
                 continue;
             }
