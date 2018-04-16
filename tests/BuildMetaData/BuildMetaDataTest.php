@@ -107,7 +107,7 @@ class BuildMetaDataTest extends TestCase
 
     /**
      * @return void
-     *             
+     *
      * @throws \Abdelrahmanrafaat\SemanticVersion\BuildMetaData\EmptyBuildMetaDataIdentifierException
      * @throws \Abdelrahmanrafaat\SemanticVersion\BuildMetaData\InvalidBuildMetaDataIdentifierException
      */
