@@ -121,7 +121,7 @@ $secoundVersion = (new SemanticVersion)->setVersion('1.0.0-rc');
 
 $firstVersion->equals($secoundVersion); //false
 $firstVersion->lessThan($secoundVersion); //true
-$secoundVersion->greaterThan($firstVersion); //false
+$secoundVersion->greaterThan($firstVersion); //true
 ```
 
 ---
