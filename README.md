@@ -64,7 +64,7 @@ More detailed explination can be found => https://semver.org/
 
  ### Package Installation
 ```
-$ composer require 
+$ composer require abdelrahman/semantic-versioning
 ```
 
 ---
@@ -99,6 +99,8 @@ $packageVersion->getNormalVersion(); //2.1.1
 
 ```
 
+---
+
 #### Comparing two versions
 - Depends on the precedence of normal version and pre release
 - Build meta data gets ignored when comparing two semantic versions
@@ -121,4 +123,6 @@ $firstVersion->equals($secoundVersion); //false
 $firstVersion->lessThan($secoundVersion); //true
 $secoundVersion->greaterThan($firstVersion); //false
 ```
+
+---
 
