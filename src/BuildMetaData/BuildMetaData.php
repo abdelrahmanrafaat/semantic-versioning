@@ -88,4 +88,12 @@ class BuildMetaData
     {
         return implode(self::IDENTIFIERS_SEPARATOR, $this->getIdentifiers());
     }
+
+    /**
+     * @return void
+     */
+    public function resetIdentifiers(): void
+    {
+        $this->identifiers = [];
+    }
 }

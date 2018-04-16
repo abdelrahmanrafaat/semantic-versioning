@@ -135,4 +135,20 @@ class PreReleaseTest extends TestCase
             ['rc-1']
         );
     }
+
+    /**
+     * @return void
+     *
+     * @throws \Abdelrahmanrafaat\SemanticVersion\PreRelease\EmptyPreReleaseIdentifierException
+     * @throws \Abdelrahmanrafaat\SemanticVersion\PreRelease\InvalidPreReleaseIdentifierException
+     * @throws \Abdelrahmanrafaat\SemanticVersion\PreRelease\LeadingZeroPreReleaseIdentifierException
+     */
+    public function testResetIdentifiers():void
+    {
+        $this->preRelease->setVersion('alpha-1.2');
+        $this->preRelease->resetIdentifiers();
+
+        $this->assertEmpty($this->preRelease->getIdentifiers());
+        $this->assertEmpty($this->preRelease->getPreRelease());
+    }
 }

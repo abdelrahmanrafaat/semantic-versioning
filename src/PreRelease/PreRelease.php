@@ -102,4 +102,12 @@ class PreRelease
     {
         return $this->identifiers;
     }
+
+    /**
+     * @return void
+     */
+    public function resetIdentifiers(): void
+    {
+        $this->identifiers = [];
+    }
 }

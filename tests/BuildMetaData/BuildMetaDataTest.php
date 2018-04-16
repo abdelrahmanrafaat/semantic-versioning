@@ -105,4 +105,18 @@ class BuildMetaDataTest extends TestCase
         $this->buildMetaData->setVersion('alpha-1.');
     }
 
+    /**
+     * @return void
+     *             
+     * @throws \Abdelrahmanrafaat\SemanticVersion\BuildMetaData\EmptyBuildMetaDataIdentifierException
+     * @throws \Abdelrahmanrafaat\SemanticVersion\BuildMetaData\InvalidBuildMetaDataIdentifierException
+     */
+    public function testResetIdentifiers():void
+    {
+        $this->buildMetaData->setVersion('exp.sha.5114f85');
+        $this->buildMetaData->resetIdentifiers();
+
+        $this->assertEmpty($this->buildMetaData->getIdentifiers());
+        $this->assertEmpty($this->buildMetaData->getBuildMetaData());
+    }
 }

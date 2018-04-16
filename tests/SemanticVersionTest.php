@@ -267,11 +267,83 @@ class SemanticVersionTest extends TestCase
                 '1.0.0-alpha',
                 false,
             ],
-            'Test with equal normal version and second has more pre release identifiers'                                      => [
+            'Test with equal normal version and second has more pre release identifiers'                                     => [
                 '1.0.0-alpha',
                 '1.0.0-alpha.1',
                 true,
             ],
         ];
+    }
+
+    /**
+     * @return void
+     *
+     * @throws \Abdelrahmanrafaat\SemanticVersion\BuildMetaData\EmptyBuildMetaDataIdentifierException
+     * @throws \Abdelrahmanrafaat\SemanticVersion\BuildMetaData\InvalidBuildMetaDataIdentifierException
+     * @throws \Abdelrahmanrafaat\SemanticVersion\NormalVersion\InvalidNormalVersionException
+     * @throws \Abdelrahmanrafaat\SemanticVersion\NormalVersion\NormalVersionShouldBePositiveNumberException
+     * @throws \Abdelrahmanrafaat\SemanticVersion\PreRelease\EmptyPreReleaseIdentifierException
+     * @throws \Abdelrahmanrafaat\SemanticVersion\PreRelease\InvalidPreReleaseIdentifierException
+     * @throws \Abdelrahmanrafaat\SemanticVersion\PreRelease\LeadingZeroPreReleaseIdentifierException
+     */
+    public function testPumpMajor(): void
+    {
+        $this->semanticVersion->setVersion('1.2.3-alpha+001');
+        $this->semanticVersion->pumpMajor();
+
+        $this->assertEquals($this->semanticVersion->getMajorVersion(), '2');
+        $this->assertEquals($this->semanticVersion->getMinorVersion(), '0');
+        $this->assertEquals($this->semanticVersion->getPatchVersion(), '0');
+
+        $this->assertEmpty($this->semanticVersion->getPreRelease());
+        $this->assertEmpty($this->semanticVersion->getBuildMetaData());
+    }
+
+    /**
+     * @return void
+     *
+     * @throws \Abdelrahmanrafaat\SemanticVersion\BuildMetaData\EmptyBuildMetaDataIdentifierException
+     * @throws \Abdelrahmanrafaat\SemanticVersion\BuildMetaData\InvalidBuildMetaDataIdentifierException
+     * @throws \Abdelrahmanrafaat\SemanticVersion\NormalVersion\InvalidNormalVersionException
+     * @throws \Abdelrahmanrafaat\SemanticVersion\NormalVersion\NormalVersionShouldBePositiveNumberException
+     * @throws \Abdelrahmanrafaat\SemanticVersion\PreRelease\EmptyPreReleaseIdentifierException
+     * @throws \Abdelrahmanrafaat\SemanticVersion\PreRelease\InvalidPreReleaseIdentifierException
+     * @throws \Abdelrahmanrafaat\SemanticVersion\PreRelease\LeadingZeroPreReleaseIdentifierException
+     */
+    public function testPumpMinor(): void
+    {
+        $this->semanticVersion->setVersion('1.2.3-alpha+001');
+        $this->semanticVersion->pumpMinor();
+
+        $this->assertEquals($this->semanticVersion->getMajorVersion(), '1');
+        $this->assertEquals($this->semanticVersion->getMinorVersion(), '3');
+        $this->assertEquals($this->semanticVersion->getPatchVersion(), '0');
+
+        $this->assertEmpty($this->semanticVersion->getPreRelease());
+        $this->assertEmpty($this->semanticVersion->getBuildMetaData());
+    }
+
+    /**
+     * @return void
+     *
+     * @throws \Abdelrahmanrafaat\SemanticVersion\BuildMetaData\EmptyBuildMetaDataIdentifierException
+     * @throws \Abdelrahmanrafaat\SemanticVersion\BuildMetaData\InvalidBuildMetaDataIdentifierException
+     * @throws \Abdelrahmanrafaat\SemanticVersion\NormalVersion\InvalidNormalVersionException
+     * @throws \Abdelrahmanrafaat\SemanticVersion\NormalVersion\NormalVersionShouldBePositiveNumberException
+     * @throws \Abdelrahmanrafaat\SemanticVersion\PreRelease\EmptyPreReleaseIdentifierException
+     * @throws \Abdelrahmanrafaat\SemanticVersion\PreRelease\InvalidPreReleaseIdentifierException
+     * @throws \Abdelrahmanrafaat\SemanticVersion\PreRelease\LeadingZeroPreReleaseIdentifierException
+     */
+    public function testPumpPatch(): void
+    {
+        $this->semanticVersion->setVersion('1.2.3-alpha+001');
+        $this->semanticVersion->pumpPatch();
+
+        $this->assertEquals($this->semanticVersion->getMajorVersion(), '1');
+        $this->assertEquals($this->semanticVersion->getMinorVersion(), '2');
+        $this->assertEquals($this->semanticVersion->getPatchVersion(), '4');
+
+        $this->assertEmpty($this->semanticVersion->getPreRelease());
+        $this->assertEmpty($this->semanticVersion->getBuildMetaData());
     }
 }

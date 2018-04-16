@@ -185,6 +185,9 @@ class SemanticVersion
     public function pumpMajor(int $increment = 1): void
     {
         $this->normalVersion->pumpMajor($increment);
+
+        $this->preRelease->resetIdentifiers();
+        $this->buildMetaData->resetIdentifiers();
     }
 
     /**
@@ -193,6 +196,9 @@ class SemanticVersion
     public function pumpMinor(int $increment = 1): void
     {
         $this->normalVersion->pumpMinor($increment);
+
+        $this->preRelease->resetIdentifiers();
+        $this->buildMetaData->resetIdentifiers();
     }
 
     /**
@@ -201,6 +207,9 @@ class SemanticVersion
     public function pumpPatch(int $increment = 1): void
     {
         $this->normalVersion->pumpPatch($increment);
+
+        $this->preRelease->resetIdentifiers();
+        $this->buildMetaData->resetIdentifiers();
     }
 
     /**
